@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Отслеживание грузов</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<h1>Отслеживание грузов</h1>
+<form action="/orders/tracking" method="post">
+    <label>Введите ID заказа:</label>
+    <input type="text" name="id" required/>
+    <button type="submit" class="btn btn-primary">Отследить</button>
+</form>
+<div th:if="${order != null}">
+    <h2>Статус заказа ID: <span th:text="${order.id}"></span></h2>
+    <p>Описание груза: <span th:text="${order.cargoDescription}"></span></p>
+    <p>Статус: <span th:text="${order.status}"></span></p>
+    <p>Дата создания: <span th:text="${order.createdAt}"></span></p>
+</div>
+<a href="/orders/reports">Перейти к отчетам</a>
+<!-- Подключение Bootstrap JS и jQuery через CDN (опционально) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
