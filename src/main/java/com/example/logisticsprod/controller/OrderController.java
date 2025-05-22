@@ -26,7 +26,12 @@ import java.util.List;
 public class OrderController {
     @Autowired
     private OrderService orderService;
-
+    // Новый маршрут для корневого URL
+    @GetMapping("/")
+    public String home() {
+        return "redirect:/orders"; // Перенаправление на /orders
+    }
+    
     @GetMapping
     public String getAllOrders(Model model) {
         List<Order> orders = orderService.getAllOrders();
